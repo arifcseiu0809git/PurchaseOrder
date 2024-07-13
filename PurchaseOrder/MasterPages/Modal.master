@@ -1,0 +1,146 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Modal.master.cs" Inherits="MasterPages_Modal" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title>Purchase Order</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+    <style type="text/css">
+        div.scroll {
+            margin: 4px, 4px;
+            padding: 4px;
+            width: 350px;
+            height: 200px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align: justify;
+        }
+    </style>
+
+
+    <link href="../App_Themes/WhiteOrange/thickbox.css" rel="stylesheet" />
+    <script type="text/javascript" src="./Scripts/jquery.js"></script>
+    <script type="text/javascript" src="./Scripts/utility.js"></script>
+    <script type="text/javascript" src="./Scripts/thickbox.js"></script>
+    <script type="text/javascript" src="./Scripts/ui.core.js"></script>
+    <script type="text/javascript" src="./Scripts/ui.draggable.js"></script>
+    <script type="text/javascript" src="./Scripts/validation.js"></script>
+    <script type="text/javascript" src="./Scripts/utility.js"></script>
+    <script type="text/javascript" src="./Scripts/ui.dialog.js"></script>
+
+
+    <script src="./AutoComplete/Scripts/jquery.autocomplete.js" type="text/javascript"></script>
+    <script src="./AutoComplete/Scripts/jquery.bgiframe.min.js" type="text/javascript"></script>
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script type="text/javascript">
+
+        function clear() {
+
+            $("body > div:first").remove();
+            $("Style:first").remove();
+            ModifyLeftpanel();
+        }
+
+
+        function adjustModal(heightVal) {
+            $('#TB_window').dialog('option', 'height', heightVal);
+
+        }
+    </script>
+    <link href="../Content/assets/bundles/datatables/datatables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../Content/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" />
+    <link href="../Content/assets/css/app.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../Content/assets/css/app.min.css" />
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../Content/assets/css/style.css" />
+    <link rel="stylesheet" href="../Content/assets/css/components.css" />
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="../Content/assets/css/custom.css" />
+    <link rel='shortcut icon' type='image/x-icon' href='../Content/assets/img/favicon.ico' />
+    <style type="text/css">
+        .ui-dialog-content ui-widget-content {
+            background: white !important;
+        }
+    </style>
+
+    <style type="text/css">
+        select {
+            display: block;
+            width: 100%;
+            height: calc(2.25rem + -1px) !important;
+            padding: .375rem .75rem;
+            font-size: 14px !important;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+            transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+        }
+
+        .tabulardata input {
+            height: calc(2.25rem + -1px) !important;
+        }
+
+        .ui-state-active{
+            background: #0A246A !important;
+            border : 1px solid #0A246A;            
+            color:white !important;
+        }
+        .ui-autocomplete li:nth-child(even){
+            background: #eee !important;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server" autocomplete="off">
+        <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="True"></asp:ScriptManager>
+        <div style="text-align: center">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script type="text/javascript">
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var count = 0;
+            if (count == 0) {
+                setInterval(function () {
+                    $('input[type=text]').addClass('form-control');
+                    $('select').addClass('form-control');
+                    $('select').addClass('selectStyle');
+                    count = 1;
+                }, 1000);
+            }
+            $('input[type="date"]').addClass('date');
+        });
+
+    </script>
+
+ <style type="text/css">
+        .selectStyle {
+         min-width: 120px;
+        }
+        .ListViewStyle{
+	overflow:auto;
+}
+    </style>
+
+</body>
+</html>
+

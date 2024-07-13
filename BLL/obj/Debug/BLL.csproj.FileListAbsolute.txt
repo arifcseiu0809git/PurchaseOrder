@@ -1,0 +1,9 @@
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\BLL.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\BLL.pdb
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\DAL.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\DAL.pdb
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\obj\Debug\BLL.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\obj\Debug\BLL.pdb

@@ -1,0 +1,38 @@
+﻿ <asp:ListView SkinId="ListviewSkin" runat="server">
+ </asp:ListView>
+ 
+ <asp:TextBox runat="server" SkinId="txtCommonSkin" width="246px"   />
+ <asp:TextBox runat="server" SkinId="txtMediumSkin" width="150px"   />
+ <asp:TextBox runat="server" SkinId="txtShortSkin" width="226px"   />
+ <asp:TextBox runat="server" SkinId="txtMultiSkin"  width="250px"  />
+ <asp:TextBox runat="server" SkinId="txtDate"  Width="100px" />
+ <asp:Label runat="server" SkinId="lblCommonSkin" height="14px" width="150px" CssClass="formlbl"/>
+ <asp:Label runat="server" SkinId="lblLargeSkin" height="14px" width="250px" CssClass="formlbl"/>
+ <asp:Label runat="server" SkinId="lblErrorMsgSkin" height="14px" CssClass="formlblErr"/>
+ <asp:DropDownList runat="server" SkinID="ddlCommonSkin" BorderStyle="Solid" BorderWidth="1px"  BorderColor="#E0E0E0"  Width="250px"  />
+ <asp:DropDownList runat="server" SkinID="ddlLargeSkin" BorderStyle="Solid" BorderWidth="1px"  BorderColor="#E0E0E0"  Width="350px"  />
+ <asp:DropDownList runat="server" SkinID="ddlSmallSkin" BorderStyle="Solid" BorderWidth="1px"  BorderColor="#E0E0E0"  Width="150px"  />
+ <asp:DropDownList runat="server" SkinID="ddlMediumSkin" BorderStyle="Solid" BorderWidth="1px"  BorderColor="#E0E0E0"  Width="200px"  />
+ <asp:Button   SkinId="btnCommonSkin" runat="server" CssClass="button" width="80px" />
+  <asp:Button   SkinId="btnLargeSkin" runat="server" CssClass="button" width="100px" />
+  <asp:Button   SkinId="btnLargestSkin" runat="server" CssClass="button" width="150px" />
+ <asp:SiteMapPath SkinID="NavigationSkinID" runat="server"   Font-Size="12px" Font-Names="Verdana" PathSeparator="&nbsp; >>&nbsp; ">
+    <PathSeparatorStyle Font-Names="Verdana" Font-Bold="True" ForeColor="#ac8732" />
+    <CurrentNodeStyle ForeColor="#000000" />
+    <NodeStyle  Font-Bold="True" ForeColor="#3768a0"  />
+    <RootNodeStyle Font-Bold="True" ForeColor="#000000" />
+</asp:SiteMapPath>
+
+ <asp:TreeView runat="server" SkinId="TreeView"  ShowLines="True"  Font-Size="7.5pt" Font-Names="Verdana" NodeWrap="True" >
+    <ParentNodeStyle />
+    <HoverNodeStyle Font-Underline="True" ForeColor="#3E5B3F" />
+    <SelectedNodeStyle Font-Underline="True" ForeColor="#FF4444" HorizontalPadding="5px" VerticalPadding="0px" />
+    <NodeStyle HorizontalPadding="5px" NodeSpacing="0px" Font-Underline="False" VerticalPadding="0px" />
+</asp:TreeView>
+<asp:GridView SkinId="gridviewSkin" runat="server" BackColor="#C8C8C8" ForeColor="black" BorderColor="#dcdcba" BorderStyle="solid" BorderWidth="0px" CellPadding="1" CellSpacing="1" Font-Names="Verdana" Font-Size="11px" GridLines="None" Width="100%">
+                                    <HeaderStyle BackColor="#ffcb25" ForeColor="Black" />
+                                    <RowStyle BackColor="#FFFFFF" />
+                                    <AlternatingRowStyle BackColor="#fafaf0" />
+                                    <PagerStyle BackColor="#E1E1E1" ForeColor="Black" HorizontalAlign="Center" />
+                                     
+ </asp:GridView>

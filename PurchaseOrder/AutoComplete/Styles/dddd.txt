@@ -1,0 +1,57 @@
+CREATE OR REPLACE TRIGGER CFDB.POS_TRI_DISTRIBUTOR_RF
+BEFORE INSERT ON 
+ CFDB.TBLDISTRIBUTOR FOR EACH ROW
+declare RFRAISERID1 NUMBER default 0; 
+BEGIN
+
+
+ 
+
+
+ INSERT INTO TBLRFRAISER
+      (
+       RFRAISERCODE
+      ,LOCATIONID
+      
+      ,SEGMENTNAME
+      ,SEGMENTTYPE
+      )
+    VALUES
+      (
+       :NEW.DISTRIBUTORCODE
+      ,NULL
+      
+      ,:NEW.DISTRIBUTORNAME
+      ,'100'
+      );
+      INSERT INTO TBLCUSTOMER
+      (
+           CUSTOMERCODE
+          ,CONTACTMOBILENO  
+          ,CUSTOMERNAME     
+          ,ADDRESSLINE1     
+          ,ADDRESSLINE2     
+          ,EMAILADDRESS     
+          ,CUSTOMERTYPEID   
+      )
+    VALUES
+      (
+       :NEW.DISTRIBUTORCODE
+      ,NULL
+      ,:NEW.DISTRIBUTORNAME
+      ,NULL
+      ,NULL
+      ,NULL
+      ,1
+      );
+      
+      
+    --  Select RFRAISERID into RFRAISERID1 from TBLRFRAISER where RFRAISERCODE=:NEW.DISTRIBUTORCODE and SEGMENTTYPE='100';
+      
+      
+      --:NEW.RFRAISERID:=RFRAISERID1;
+            
+      
+END;
+/
+

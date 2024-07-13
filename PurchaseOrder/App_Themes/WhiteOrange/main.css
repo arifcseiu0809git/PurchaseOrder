@@ -1,0 +1,619 @@
+﻿/*body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color:#FFFFFF;
+	font-family: verdana;
+	font-size:small;
+
+}
+
+.menubar
+{
+	
+	background-image : url("images/grid-blue-hd.gif") ;
+	background-position:top;
+	background-repeat:repeat-x; 
+}
+
+.loginInfo
+{
+padding-right:20px;
+color:#999999;
+font-weight:bold;
+}
+.leftPanel
+{
+	float:left;
+	height:100%;
+	width:150px;
+	
+	
+}
+	
+
+.leftPanel .timeEvent
+{
+	font-size:8px;
+	color:#333333;
+	float:right;
+	position:relative;
+}
+.leftPanel .eventHeader
+{
+	padding:3px;
+	margin:3px;
+	background-color:#F26D1A;	
+	font-weight:bold;
+	color:White;	
+}
+.leftPanel .eventList
+{
+	padding:3px;
+	margin:3px;
+	background-color:#FFF6E6;	
+	border:solid 1px #FFE8BB;
+	width:140px;
+}
+.InvoiceCancelY
+{
+	visibility:visible
+	
+	
+}
+
+.Visible0
+{
+	visibility:visible
+}
+
+
+.VisibleN
+{
+	display:none;
+}
+
+
+.InvoiceCancelC
+{
+	visibility:hidden
+	
+	
+}
+.InvoiceGeneratedY
+{
+	visibility:hidden
+	
+	
+}
+
+
+.InvoiceGeneratedR
+{
+	visibility:hidden
+	
+	
+}
+
+.InvoiceGeneratedC
+{
+	visibility:visible
+	
+	
+}
+
+.CollectionStatus
+{
+	visibility:visible
+	
+	
+}
+.CollectionStatusY
+{
+	visibility:hidden
+	
+	
+}
+
+.CollectionStatusN
+{
+	visibility:Visible
+	
+	
+}
+
+
+
+.DeliverdY
+{
+	visibility:hidden
+}
+.DeliverdN
+{
+	visibility:visible
+}
+
+.CNS0
+{
+	visibility:visible;
+}
+.CNS1
+{
+	visibility:hidden;
+}
+.Content
+{
+	padding-left:15px;
+	padding-top:10px;
+  float  :right;
+	border-left:solid 1px #FCDCC5;	
+
+	
+}
+
+.tree  input
+{
+	margin-right:5px;
+}
+.tree
+{
+	margin-top:10px;
+}
+
+.formlbl
+{
+	color:Black;
+	padding-left:10px;
+	display:inline-block;
+	font-size:small;
+}
+
+input,textarea,select
+{
+	font-family: verdana;
+	font-size:small;
+}
+
+a:hover {text-decoration:none}
+.banglalink {
+	color: #FF4444;
+	font-size: 30px;
+	font-family: verdana;
+	text-decoration:none
+}
+
+.dms
+{
+	color: #999999;
+	text-decoration: none;
+	font: smallcaption;
+	text-transform: uppercase;
+}
+
+.style1 {
+	color: #8E8E8E;
+	font-size: 11px;
+	font-family: verdana;
+	text-decoration:none
+}
+.footertext {
+	color: #969693;
+	font-size: 11px;
+	font-family: verdana
+}
+.style3 {
+	color: #7C7C7C;
+	font-size: 8px;
+	font-family: verdana;
+	font-weight:bold
+}
+.logininfo {
+	color: #7C7C7C;
+	font-size: 11px;
+	font-family: verdana;
+	text-decoration:none
+}
+
+
+label.required
+{
+	color:Red;
+}
+
+.msg
+{
+	text-align:center;
+	font-size:8.75pt;
+}
+
+.contenttext {
+	
+	font-size:small;
+	font-family: verdana;
+	border: #FCDCC5 1px solid; 
+	
+	
+	margin-top:10px; 
+	text-align:left;
+	
+}
+
+.tdSubmit
+{
+	padding-top:0px;
+	text-align:center;
+	background-color:#FCDCC5;
+	
+}
+
+.sitemap
+{
+	font-size:14px;
+	font-weight:bold;
+	padding-top:5px;
+	padding-bottom:5px;
+	
+}
+
+.contenttext TD
+{
+	vertical-align:top;
+}
+
+
+.contentheader
+{
+	color: #000000;
+	font: smallcaption;
+}
+.errortext
+{
+	color: #660033;
+	text-decoration: none;
+	font: messagebox;
+}
+
+.errorheader
+{
+	color: #660033;
+	font: smallcaption;
+}
+
+.errorbackground 
+{
+	background-color: #ffff99; 
+	border-right: #ff9933 1px solid; 
+	border-top: #ff9933 1px solid; 
+	border-left: #ff9933 1px solid; 
+	border-bottom: #ff9933 1px solid;
+}
+.button ,input.thickbox
+{
+	color: #FFFFFF;
+	font: smallcaption;
+	font-weight:bold;
+	border:0px;
+	background-color:#F37821;
+	margin-top:5px;
+	margin-bottom:5px;
+	height:20px;
+	cursor:pointer;
+}
+
+.style9 {
+	color: #7EA32E;
+	font-size: 11px;
+	font-family: verdana
+}
+
+.Login
+{
+	border-left:5px;
+	border-right:5px;
+}
+
+.CustomErrorHeader
+{
+	color: Red;
+	font-size:10pt;
+	font-weight: bold; 
+}
+
+
+
+.gridResults
+{
+	font-family:Verdana;
+	font-weight:bold;
+	font-size:small;
+	display:inline-block;
+	width:30%;
+	float:left;
+	height:20px;
+	vertical-align:middle;
+	position:relative;
+	top:3px;
+	color:White;
+	margin-left:5px;
+}
+
+.Results
+{
+	font-family:Verdana;
+	font-weight:bold;
+	font-size:small;
+	display:inline-block;	
+	float:left;
+	height:20px;
+	vertical-align:middle;
+	position:relative;
+	top:3px;
+	color:White;
+	margin-left:5px;
+}
+
+.pager
+{
+	
+	display:inline-block;
+}
+
+input.PagerButton
+{
+	margin-left:10px;
+	position:relative;
+	top:4px;
+}
+
+
+
+.pagerCurrent
+{
+	font-size:8.75pt;
+	font-weight:bold;
+	
+	margin-left:10px;
+	color:White;
+	
+	
+}
+
+
+.ListViewStyle
+{
+    color:#808080;
+	font-family:verdana;
+	font-size:small;
+	border-left:solid 1px #fff6e6;
+	border-right:solid 1px #fff6e6;
+	
+	
+}
+
+.ListViewStyle .pager
+{
+	float:right;
+	font-size:9pt;
+	padding-right:15px;
+}
+
+
+.pagerNumeric
+{
+	
+  margin-left:10px;
+    font-weight:bold;
+    font-size:8.75pt;
+    color:Blue;
+    text-decoration:none;
+}
+
+
+
+
+ Table Styles 
+.ListViewStyle .datatable
+{width:100%;
+ color:#808080;
+
+ }
+.gridheader TH
+{
+	text-align:center;
+	border-left:solid 1px #e0e0e0;
+	background-image : url("images/grid-blue-hd.gif"); 
+	color:White;
+	height:20px;
+} 
+
+.gridheader  A
+{
+	
+	color:White;
+} 
+
+       
+.ListViewStyle .datatable TD
+{
+	border-top:solid 1px #e0e0e0;
+	border-left:solid 1px #e0e0e0;
+	
+	padding:0px  5px 0px 5px ;
+	color:#111;
+}
+
+
+              
+.ListViewStyle .datatable .altrow 
+{
+	height:20px;
+	background-color:#fff6e6;
+	border-right:solid 1px #e0e0e0;
+}
+.ListViewStyle .datatable .row 
+{
+	height:20px;
+	background-color:#ffffff;
+	border-right:solid 1px #e0e0e0;
+}
+.ListViewStyle .datatable TD.money{ color:Green; } 
+
+
+
+
+
+ .footer
+{
+	border-bottom:solid 1px #e0e0e0;
+	border-left:solid 2px #e0e0e0;
+	border-right:solid 2px #e0e0e0;
+	height:21px;
+	background-image : url("images/grid-blue-ft.gif");
+}
+
+.gridheader
+{
+	height:21px;
+	
+
+} 
+
+
+select option
+{
+	padding-left:5px;
+}
+
+#loginBox
+{
+	
+	background-color:#F37821; 
+background-color:Silver;
+	margin-top:150px;
+	width:620px;
+	height:290px;
+	
+}
+
+#loginHeader
+{
+	position:relative;
+	height:50px;
+	background-color:#F37821;
+	margin-bottom:10px;
+	text-align:left;
+	font-family:Verdana;
+	font-size:26pt;
+	font-weight:bold;
+	color:White;
+}
+
+#loginControls
+{
+	width:220px;
+	height:200px;
+	float:left;
+	background-color:#FFDCC5;
+	font-weight:bold;
+	text-align:left;
+}
+#loginLogo
+{
+	width:400px;
+	height:200px;
+	float:left;
+	background-image : url("images/banglalinklogo.jpg");
+}
+
+#loginFooter
+{
+	
+	height:40px;
+	background-color:#F37821;
+	text-align:center;
+	font-family:Verdana;
+	font-size:20pt;
+	font-weight:bold;
+	color:White;
+	margin-top:10px;
+	padding-top:10px;
+}
+
+#userPanel
+{
+	display:block;
+	text-align:right;
+	color:White;
+	font-weight:bold;
+	vertical-align:middle;
+	padding-right:20px;
+}
+
+#userPanel a
+{
+	
+
+	font-weight:bold;
+	
+	
+}
+TABLE.tabulardata {
+	        
+        }
+        TABLE.tabulardata TR {
+	    
+        }
+        TABLE.tabulardata TH {
+	       
+	        PADDING:1px;
+        }
+        TABLE.tabulardata TD {
+	        PADDING:1px;
+        }
+
+
+#divLoading
+{
+	
+
+position:absolute;
+width:80px;
+margin-left:45%;
+ background-color:#FFFFAE;
+ color:Black;
+ font-weight:bold;
+ font-size::small;
+ height:25px;
+		border: #dfdfd5 1px solid; 
+	text-align:center;
+	
+}
+
+
+ menu style 
+
+*/
+
+input[type=radio] {
+	margin: 5px;
+	padding: 5px;
+}
+.VisibleN {
+	display: none;
+}
+.modal-body {
+	font-family: verdana;
+	border: #FCDCC5 1px solid;
+	margin-top: 10px;
+	text-align: left;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.contenttext {
+	font-family: verdana;
+	border: #FCDCC5 1px solid;
+	/*margin-top: 10px;*/
+	text-align: left;
+}

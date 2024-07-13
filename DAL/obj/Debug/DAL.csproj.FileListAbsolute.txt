@@ -1,0 +1,15 @@
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\DAL.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\DAL.pdb
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Security.AccessControl.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Security.Permissions.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Security.Principal.Windows.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Security.AccessControl.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Security.Permissions.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Security.Principal.Windows.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.pdb
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
