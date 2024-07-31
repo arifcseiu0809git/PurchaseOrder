@@ -44,6 +44,7 @@ namespace DAL.DTO
         public int SupplierID { get; set; }
         public string SupplierName { get; set; }
         public DateTime ExpectedDate { get; set; }
+        public DateTime CurrentDate { get; set; }        
         public string Remark { get; set; }
         public int ItemID { get; set; }
         public string ItemName { get; set; }

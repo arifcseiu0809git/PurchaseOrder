@@ -4,6 +4,7 @@
     <link href="Content/assets/css/jquery-ui-1.9.2.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Styles.css" />
     <style type="text/css">
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -15,14 +16,14 @@
             overflow-y: auto;
         }
 
-            .dropdown-content div {
-                padding: 8px 16px;
-                cursor: pointer;
-            }
+        .dropdown-content div {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
 
-                .dropdown-content div:hover {
-                    background-color: #f1f1f1;
-                }
+        .dropdown-content div:hover {
+            background-color: #f1f1f1;
+        }
 
         table {
             font-family: arial, sans-serif;
@@ -39,10 +40,16 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+        .col-form-label{
+            font-weight:bolder;
+        }
+
     </style>
     <script type="text/javascript" src="Scripts.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
+
         $(document).ready(function () {
             $('#searchInput').on('input', function () {
                 var searchText = $(this).val().trim();
@@ -81,73 +88,34 @@
             });
         });
 
-
-
-
-        //for add edit
-
-        <%--$(document).ready(function () {
-            $.ajax({
-                type: "POST",
-                url: "PurchaseOrderEntry.aspx/GetItems",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    var items = response.d;
-                    $.each(items, function (index, item) {
-                        var row = "<tr>";
-                        row += "<td>" + item.ItemName + "</td>";
-                        row += "<td>" + item.Qty + "</td>";
-                        row += "<td>" + item.Rate + "</td>";
-                        row += "<td><button onclick='editItem(\"" + item.ItemName + "\")'>Edit</button></td>";
-                        row += "<td><button onclick='deleteItem(\"" + item.ItemName + "\")'>Delete</button></td>";
-                        row += "</tr>";
-                        $("#<%= itemsTable.ClientID %> tbody").append(row);
-                    });
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-        });--%>
-
-
-        //
-
-
         function addItem() {
             var itemName = document.getElementById('searchInput').value;
-            /*var itemName = document.getElementById('itemName').value;*/
             var qty = document.getElementById('qty').value;
             var rate = document.getElementById('rate').value;
             var total = qty * rate;
+
+            var rate = document.getElementById('rate').value;
 
             if (itemName === '' || qty === '' || rate === '') {
                 alert('Please fill all fields.');
                 return;
             }
 
-            //alert('fir');
-            /*var table = document.getElementById('itemsTable').getElementsByTagName('tbody')[0];*/
             var table = document.getElementById('<%= itemsTable.ClientID %>').getElementsByTagName('tbody')[0];
             var newRow = table.insertRow();
-            //alert('sec');
 
             var cell1 = newRow.insertCell(0);
             var cell2 = newRow.insertCell(1);
             var cell3 = newRow.insertCell(2);
-            /* var cell4 = newRow.insertCell(3);*/
             var cell4 = newRow.insertCell(3);
             var cell5 = newRow.insertCell(4);
 
             cell1.innerHTML = itemName;
             cell2.innerHTML = qty;
             cell3.innerHTML = rate;
-            /*cell4.innerHTML = total;*/
             cell4.innerHTML = '<button type="button" onclick="editItem(this)">Edit</button>';
             cell5.innerHTML = '<button type="button" onclick="deleteItem(this)">Delete</button>';
 
-            /*document.getElementById('itemName').value = '';*/
             document.getElementById('searchInput').value = '';
             document.getElementById('qty').value = '';
             document.getElementById('rate').value = '';
@@ -155,10 +123,11 @@
 
         function editItem(button) {
             var row = button.parentNode.parentNode;
-            /*document.getElementById('itemName').value = row.cells[0].innerHTML;*/
-            document.getElementById('searchInput').value = row.cells[0].innerHTML;
-            document.getElementById('qty').value = row.cells[1].innerHTML;
-            document.getElementById('rate').value = row.cells[2].innerHTML;
+            console.log(row);
+
+            document.getElementById('searchInput').value = row.cells[0].innerHTML.trim();
+            document.getElementById('qty').value = row.cells[1].innerHTML.trim();
+            document.getElementById('rate').value = row.cells[2].innerHTML.trim();
 
             row.parentNode.removeChild(row);
         }
@@ -173,11 +142,41 @@
             var quantities = [];
             var rates = [];
 
-            
-            /*var table = document.getElementById('itemsTable').getElementsByTagName('tbody')[0];*/
-            var table = document.getElementById('<%= itemsTable.ClientID %>').getElementsByTagName('tbody')[0];
+            var textRef = document.getElementById('<%= txtRefIDs.ClientID %>');
+            var textPONO = document.getElementById('<%= txtPONO.ClientID %>');
+            var textPODate = document.getElementById('<%= txtPODate.ClientID %>');
+            var textSupplier = document.getElementById('<%= ddlSupplier.ClientID %>');
+            var textExpectedDate = document.getElementById('<%= txtExpectedDate.ClientID %>');
+            var textRemarks = document.getElementById('<%= txtRemarks.ClientID %>');
 
-            if (table.rows.length <= 0) {
+
+            if (textRef.value.trim() === '') {
+                alert('REF. ID is required.');
+                return false;
+            }
+            else if (textPONO.value.trim() === '') {
+                alert('PO NO is required.');
+                return false;
+            }
+            else if (textPODate.value.trim() === '') {
+                alert('PO Date is required.');
+                return false;
+            }
+            else if (textPODate.value.trim() === '') {
+                alert('PO Date is required.');
+                return false;
+            }
+            else if (textExpectedDate.value.trim() === '') {
+                alert('Expected Date is required.');
+                return false;
+            }
+            else if (textRemarks.value.trim() === '') {
+                alert('Remarks is required.');
+                return false;
+            }
+
+            var table = document.getElementById('<%= itemsTable.ClientID %>').getElementsByTagName('tbody')[0];
+            if (table.rows.length <= 1) {
                 alert('Please add atleast one item.');
                 return false;
             }
@@ -203,9 +202,9 @@
             <div class="col-12">
                 <asp:UpdatePanel ID="lstpanel" runat="server">
                     <ContentTemplate>
-                        <div style="text-align:center; background-color:#33C7FF; color:black; font-size:16px; margin-bottom: 35px; ">
-                                    PURCHASE ORDER ENTRY FORM
-                                </div>
+                        <div style="text-align: center; background-color: #33C7FF; color: black; font-size: 16px; margin-bottom: 35px;">
+                            PURCHASE ORDER ENTRY FORM
+                        </div>
                         <div class="form-group row">
                             <div class="form-group row col-sm-6">
                                 <asp:Label runat="server" Text="REF. ID:" class="col-sm-5 col-form-label" Style="text-align: left"> </asp:Label>
@@ -218,8 +217,7 @@
                                 <div class="col-sm-7">
                                     <asp:TextBox ID="txtPONO" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
-                            </div>
-                            
+                            </div>                           
                         </div>
                         <div class="form-group row">
                             <div class="form-group row col-sm-6">
@@ -249,7 +247,6 @@
                             </div>
                         </div>
                             </div>
-
                         <table class="contenttext" style="table-layout: fixed; width: 100%;">
                             <tr>
                                 <td colspan="2" style="border: #FCDCC5 1px solid;">
@@ -306,6 +303,7 @@
                                         <br />
                                         <div style="text-align: right">
                                             <asp:Button ID="btnSave" runat="server" Text="Save" OnClientClick="return prepareDataForSubmit();" OnClick="btnSave_Click" />
+                                            <asp:Button ID="btnDelete" Visible="false" runat="server" Text="Delete" OnClick="btnSave_Click" />
                                             <asp:Button ID="btnClose" runat="server" Text="Close" OnClick="btnClose_Click" />
                                         </div>
                                     </div>

@@ -7,3 +7,13 @@ E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\DAL.pdb
 E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\obj\Debug\BLL.csproj.CopyComplete
 E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\obj\Debug\BLL.dll
 E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\obj\Debug\BLL.pdb
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\BLL\bin\Debug\System.Threading.Tasks.Extensions.xml

@@ -14,82 +14,10 @@ namespace DAL.Repository
     public class PurchaseOrderRepository : IPurchaseOrderRepository
     {
         private readonly string _connectionString;
-
         public PurchaseOrderRepository(string connectionString)
         {
             _connectionString = connectionString;
-            //_connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         }
-
-        //public void Create(PurchaseOrder order)
-        //{
-        //    // Implement database logic using ADO.NET
-        //}
-
-        //public void Create(PurchaseOrder order)
-        //{
-        //    using (var connection = new SqlConnection(_connectionString))
-        //    {
-        //        connection.Open();
-        //        using (var command = new SqlCommand("InsertPurchaseOrder", connection))
-        //        {
-        //            command.CommandType = CommandType.StoredProcedure;
-        //            command.Parameters.AddWithValue("@RefID", order.RefID);
-        //            command.Parameters.AddWithValue("@PONumber", order.PONumber);
-        //            command.Parameters.AddWithValue("@PODate", order.PODate);
-        //            command.Parameters.AddWithValue("@SupplierID", order.SupplierID);
-        //            command.Parameters.AddWithValue("@ExpectedDate", order.ExpectedDate);
-        //            command.Parameters.AddWithValue("@Remark", order.Remark);
-
-        //            var orderIdParam = new SqlParameter("@PurchaseOrderID", SqlDbType.Int)
-        //            {
-        //                Direction = ParameterDirection.Output
-        //            };
-        //            command.Parameters.Add(orderIdParam);
-
-        //            command.ExecuteNonQuery();
-        //            order.PurchaseOrderID = (int)orderIdParam.Value;
-
-        //            foreach (var detail in order.Details)
-        //            {
-        //                var detailCommand = new SqlCommand("InsertPurchaseOrderDetail", connection)
-        //                {
-        //                    CommandType = CommandType.StoredProcedure
-        //                };
-        //                detailCommand.Parameters.AddWithValue("@PurchaseOrderID", order.PurchaseOrderID);
-        //                detailCommand.Parameters.AddWithValue("@ItemID", detail.ItemID);
-        //                detailCommand.Parameters.AddWithValue("@Quantity", detail.Quantity);
-        //                detailCommand.Parameters.AddWithValue("@Rate", detail.Rate);
-        //                detailCommand.ExecuteNonQuery();
-        //            }
-        //        }
-        //    }
-        //}
-
-        //public void Update(PurchaseOrder order)
-        //{
-        //    // Implement database logic using ADO.NET
-        //}
-
-        //public void Delete(int orderId)
-        //{
-        //    // Implement database logic using ADO.NET
-        //}
-
-        //public PurchaseOrder GetById(int orderId)
-        //{
-        //    // Implement database logic using ADO.NET
-        //    PurchaseOrder order = new PurchaseOrder();
-        //    return order;
-        //}
-
-        //public List<PurchaseOrder> GetAll()
-        //{
-        //    // Implement database logic using ADO.NET
-        //    List<PurchaseOrder> purchaseOrders = new List<PurchaseOrder>();
-        //    return purchaseOrders;
-        //}
-
         public (List<PurchaseOrderView>, int) GetPagedPurchaseOrders(int pageNumber, int pageSize)
         {
             List<PurchaseOrderView> orders = new List<PurchaseOrderView>();
@@ -129,11 +57,10 @@ namespace DAL.Repository
 
             return (orders, totalRecords);
         }
-        public int InsertPurchaseOrder(Order order)
+        public int InsertPurchaseOrder(SqlConnection connection, SqlTransaction transaction, Order order)
         {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("InsertPurchaseOrder", connection, transaction))
             {
-                SqlCommand cmd = new SqlCommand("InsertPurchaseOrder", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@RefID", order.RefID);
@@ -143,16 +70,13 @@ namespace DAL.Repository
                 cmd.Parameters.AddWithValue("@ExpectedDate", order.ExpectedDate);
                 cmd.Parameters.AddWithValue("@Remark", order.Remark);
 
-                conn.Open();
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
-
-        public void InsertPurchaseOrderDetail(PurchaseOrderDetail detail)
+        public void InsertPurchaseOrderDetail(SqlConnection connection, SqlTransaction transaction, PurchaseOrderDetail detail)
         {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("InsertPurchaseOrderDetail", connection, transaction))
             {
-                SqlCommand cmd = new SqlCommand("InsertPurchaseOrderDetail", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@PurchaseOrderID", detail.PurchaseOrderID);
@@ -160,11 +84,9 @@ namespace DAL.Repository
                 cmd.Parameters.AddWithValue("@Quantity", detail.Quantity);
                 cmd.Parameters.AddWithValue("@Rate", detail.Rate);
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
-
         public List<Order> GetPurchaseOrders()
         {
             List<Order> orders = new List<Order>();
@@ -190,7 +112,6 @@ namespace DAL.Repository
             }
             return orders;
         }
-
         public List<PurchaseOrderView> GetPurchaseOrderById(int purchaseOrderId)
         {
             List<PurchaseOrderView> orders = new List<PurchaseOrderView>();
@@ -220,15 +141,12 @@ namespace DAL.Repository
                     });
                 }
             }
-
             return orders;
         }
-
-        public void UpdatePurchaseOrder(Order order)
+        public void UpdatePurchaseOrder(SqlConnection connection, SqlTransaction transaction, Order order)
         {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("UpdatePurchaseOrder", connection, transaction))
             {
-                SqlCommand cmd = new SqlCommand("UpdatePurchaseOrder", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@PurchaseOrderID", order.PurchaseOrderID);
@@ -239,11 +157,9 @@ namespace DAL.Repository
                 cmd.Parameters.AddWithValue("@ExpectedDate", order.ExpectedDate);
                 cmd.Parameters.AddWithValue("@Remark", order.Remark);
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
-
         public void DeletePurchaseOrder(int purchaseOrderId)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -255,7 +171,6 @@ namespace DAL.Repository
                 cmd.ExecuteNonQuery();
             }
         }
-
         public List<Supplier> GetSuppliers()
         {
             List<Supplier> suppliers = new List<Supplier>();
@@ -277,7 +192,6 @@ namespace DAL.Repository
             }
             return suppliers;
         }
-
         public Supplier GetSupplierById(int supplierId)
         {
             Supplier supplier = null;
@@ -300,7 +214,6 @@ namespace DAL.Repository
             }
             return supplier;
         }
-
         public List<Item> GetItems()
         {
             List<Item> items = new List<Item>();
@@ -322,7 +235,6 @@ namespace DAL.Repository
             }
             return items;
         }
-
         public Item GetItemById(int itemId)
         {
             Item item = null;
@@ -345,7 +257,6 @@ namespace DAL.Repository
             }
             return item;
         }
-
         public List<Item> SearchItemByName(string itemName)
         {
             List<Item> items = new List<Item>();
@@ -366,7 +277,6 @@ namespace DAL.Repository
             }
             return items;
         }
-
         public string GetGenerateNextSerial()
         {
              string nextSerialNumber = "";

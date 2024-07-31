@@ -20,10 +20,8 @@
     <link rel="stylesheet" href="../Content/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" />
     <link href="../Content/assets/css/app.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../Content/assets/css/app.min.css" />
-    <!-- Template CSS -->
     <link rel="stylesheet" href="../Content/assets/css/style.css" />
     <link rel="stylesheet" href="../Content/assets/css/components.css" />
-    <!-- Custom style CSS -->
     <link rel="stylesheet" href="../Content/assets/css/custom.css" />
 
     <style type="text/css">
@@ -40,35 +38,36 @@
         .ui-dialog-content ui-widget-content {
             background: white !important;
         }
+
         .light-sidebar.sidebar-mini .main-sidebar .sidebar-menu, .light-sidebar.sidebar-mini .main-sidebar:after, .light-sidebar.sidebar-mini .main-sidebar .dropdown-title, .light-sidebar.sidebar-mini .main-sidebar .sidebar-menu li ul.dropdown-menu li a {
             background-color: #000 !important;
             color: #c7a35f !important;
         }
 
-        .ui-state-active{
+        .ui-state-active {
             background: #0A246A !important;
-            border : 1px solid #0A246A;
-            color:white !important;
+            border: 1px solid #0A246A;
+            color: white !important;
         }
-        .ui-autocomplete li:nth-child(even){
+
+        .ui-autocomplete li:nth-child(even) {
             background: #eee !important;
         }
     </style>
 
-    <script src="Content/assets/js/app.min.js" type="text/javascript"></script> 
+    <script src="Content/assets/js/app.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery-ui-1.13.1.js"></script>
-    <link href="../Content/assets/css/jquery-ui-1.13.1.css" rel="stylesheet" /> 
-    <script type="text/javascript" src="Scripts/thickbox.js"></script> 
+    <link href="../Content/assets/css/jquery-ui-1.13.1.css" rel="stylesheet" />
+    <script type="text/javascript" src="Scripts/thickbox.js"></script>
     <script type="text/javascript" src="Scripts/validation.js"></script>
-    <script type="text/javascript" src="Scripts/utility.js"></script> 
-    <script src="AutoComplete/Scripts/jquery.autocomplete.js" type="text/javascript"></script> 
+    <script type="text/javascript" src="Scripts/utility.js"></script>
+    <script src="AutoComplete/Scripts/jquery.autocomplete.js" type="text/javascript"></script>
 </head>
 <body onload="clear()">
     <form id="form2" runat="server">
         <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="True"></asp:ScriptManager>
         <div id="app">
             <div class="main-wrapper main-wrapper-1">
-                <!-- Main Content -->
                 <div class="main-content">
                     <section class="section">
                         <div class="section-body">
@@ -85,10 +84,7 @@
                 </footer>
             </div>
         </div>
-         
     </form>
-    <!-- General CSS Files -->
-
     <div class="modal fade" id="posModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" style="margin-top: 10px !important;">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -98,20 +94,14 @@
     <script type="text/javascript">
         $('.li-modal').on('click', function (e) {
             e.preventDefault();
-            /*$('#posModal').modal('show').find('.modal-content').load($(this).attr('href'));*/
             $('#posModal').modal('show').find('.modal-content').load($(this).attr('href'));
         });
     </script>
 
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-    <!-- General JS Scripts -->
     <script src="Content/assets/bundles/datatables/datatables.min.js" type="text/javascript"></script>
-    <!-- Page Specific JS File -->
     <script src="Content/assets/js/page/datatables.js" type="text/javascript"></script>
-    <!-- Page Specific JS File -->
-    <!-- Template JS File -->
     <script src="Content/assets/js/scripts.js" type="text/javascript"></script>
-    <!-- Custom JS File -->
     <script src="Content/assets/js/custom.js" type="text/javascript"></script>
     <script type="text/javascript">
         function clear() {
@@ -135,17 +125,13 @@
             $('a').removeClass('selected');
             $('#' + selected_li).addClass('selected');
 
-
             if (selected_a2 != "" && selected_ul2 != "" && selected_li2 != "") {
                 $('#' + selected_a2).addClass('toggled');
                 $('#' + selected_ul2).addClass('custom-dropdown-menu');
                 $('#' + selected_li2).addClass('selected');
             }
-
         });
-        //setPageUrl('a_setup','ul_setup','li_DistributorBalance','a_DistributorBalance','ul_DistributorBalance','li_AccountType')
         function setPageUrl(a, ul, li, a2, ul2, li2) {
-            // Save data to sessionStorage
             sessionStorage.setItem('ul', ul);
             sessionStorage.setItem('li', li);
             sessionStorage.setItem('a', a);
@@ -154,7 +140,7 @@
             sessionStorage.setItem('a2', a2);
         }
 
-       
+
         var i = 0;
         function RemoveClassForHideSidebar() {
             if (i % 2 == 0) {
@@ -178,21 +164,16 @@
                 $('a').removeClass('selected');
                 $('#' + selected_li).addClass('selected');
 
-
                 if (selected_a2 != "" && selected_ul2 != "" && selected_li2 != "") {
                     $('#' + selected_a2).addClass('toggled');
                     $('#' + selected_ul2).addClass('custom-dropdown-menu');
                     $('#' + selected_li2).addClass('selected');
                 }
-
             }
-
             i++;
-            
         }
 
         function clearMenuList() {
-            //clear sessionStorage data
             sessionStorage.clear();
         }
 
@@ -201,9 +182,6 @@
             $('ul').removeClass('custom-dropdown-menu');
         }
     </script>
-
-
-
     <style type="text/css">
         .datatable {
             min-width: 100% !important;
@@ -219,7 +197,6 @@
                     count = 1;
                 }, 1000);
             }
-
             $('input[type="date"]').addClass('date');
             $(".date").change(function (element) {
                 var val = this.value;
@@ -235,29 +212,14 @@
 
     <style type="text/css">
         .dataTables_scrollHeadInner {
-            /*width: 100% !important;*/
         }
     </style>
 
     <style type="text/css">
-        /*.datatable td {
-            max-width: 10px !important;
-        }*/
-
-
-
-        table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting {
-     padding-right: 0px!important; 
-}
-        .ListViewStyle{
-	overflow:auto;
-}
+        table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
+            padding-right: 0px !important;
+        }
     </style>
-
-
-
-
-
 </body>
 </html>
 

@@ -13,8 +13,7 @@ using System.Xml.Linq;
 using System.Globalization;
 using System.Threading;
 public partial class MasterPages_Modal : System.Web.UI.MasterPage
-{
-      
+{     
     protected void Page_Load(object sender, EventArgs e)
     {
         Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
@@ -23,11 +22,7 @@ public partial class MasterPages_Modal : System.Web.UI.MasterPage
     
         if (!IsPostBack)
         {
-            //if (!Permissions.IsAccessible(Page.AppRelativeVirtualPath))
-            //{
-            //    Response.Flush();
-            //    Response.End();
-            //}
+
         }
     }
 }

@@ -1,5 +1,11 @@
-﻿using System;
+﻿using BLL.Service;
+using BLL.ServiceInterface;
+using DAL.Repository;
+using DAL.RepositoryInterface;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Optimization;
@@ -13,9 +19,26 @@ namespace PurchaseOrder
     {
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
+            DependencyInjectionConfig.ConfigureServices();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+    }
+
+    public static class DependencyInjectionConfig
+    {
+        public static ServiceProvider ServiceProvider { get; private set; }
+
+        public static void ConfigureServices()
+        {
+            var serviceCollection = new ServiceCollection();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString; 
+
+            serviceCollection.AddSingleton<IPurchaseOrderRepository>(provider => new PurchaseOrderRepository(connectionString));
+            serviceCollection.AddSingleton<IPurchaseOrderService>(provider => new PurchaseOrderService(provider.GetRequiredService<IPurchaseOrderRepository>(), connectionString));
+
+            ServiceProvider = serviceCollection.BuildServiceProvider();
         }
     }
 }

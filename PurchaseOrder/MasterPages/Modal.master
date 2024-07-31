@@ -32,7 +32,6 @@
     <script type="text/javascript" src="./Scripts/utility.js"></script>
     <script type="text/javascript" src="./Scripts/ui.dialog.js"></script>
 
-
     <script src="./AutoComplete/Scripts/jquery.autocomplete.js" type="text/javascript"></script>
     <script src="./AutoComplete/Scripts/jquery.bgiframe.min.js" type="text/javascript"></script>
 
@@ -58,12 +57,9 @@
     <link rel="stylesheet" href="../Content/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" />
     <link href="../Content/assets/css/app.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../Content/assets/css/app.min.css" />
-    <!-- Template CSS -->
     <link rel="stylesheet" href="../Content/assets/css/style.css" />
     <link rel="stylesheet" href="../Content/assets/css/components.css" />
-    <!-- Custom style CSS -->
     <link rel="stylesheet" href="../Content/assets/css/custom.css" />
-    <link rel='shortcut icon' type='image/x-icon' href='../Content/assets/img/favicon.ico' />
     <style type="text/css">
         .ui-dialog-content ui-widget-content {
             background: white !important;
@@ -132,13 +128,14 @@
 
     </script>
 
- <style type="text/css">
+    <style type="text/css">
         .selectStyle {
-         min-width: 120px;
+            min-width: 120px;
         }
-        .ListViewStyle{
-	overflow:auto;
-}
+
+        .ListViewStyle {
+            overflow: auto;
+        }
     </style>
 
 </body>

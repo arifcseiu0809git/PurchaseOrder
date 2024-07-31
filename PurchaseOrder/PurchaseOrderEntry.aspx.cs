@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Services;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -14,77 +16,85 @@ using BLL.Service;
 using BLL.ServiceInterface;
 using DAL.DTO;
 using DAL.Repository;
+using DAL.RepositoryInterface;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PurchaseOrder
 {
     public partial class PurchaseOrderEntry : System.Web.UI.Page
     {
-        private readonly PurchaseOrderService _purchaseOrderService;
+        private readonly IPurchaseOrderService _purchaseOrderService;
         public PurchaseOrderEntry()
         {
-            _purchaseOrderService = new PurchaseOrderService(new PurchaseOrderRepository(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString));
+            _purchaseOrderService = DependencyInjectionConfig.ServiceProvider.GetService<IPurchaseOrderService>();
         }
-        protected string editMode
+        protected string EditMode
         {
             get
             {
-                return ViewState["editMode"].ToString();
+                return ViewState["EditMode"].ToString();
             }
             set
             {
-                ViewState["editMode"] = value;
+                ViewState["EditMode"] = value;
             }
         }
-
-        protected int Order_ID
+        protected int OrderID
         {
             get
             {
-                return (int)ViewState["Order_ID"];
+                return (int)ViewState["OrderID"];
             }
             set
             {
-                ViewState["Order_ID"] = value;
+                ViewState["OrderID"] = value;
             }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                editMode = "add";
+                EditMode = "add";
 
                 if (!string.IsNullOrEmpty(Request["mode"]))
                 {
-                    editMode = Request["mode"];
+                    EditMode = Request["mode"];
                 }
                 if (!string.IsNullOrEmpty(Request["id"]))
                 {
-                    Order_ID = int.Parse(Request["id"].Trim());
+                    OrderID = int.Parse(Request["id"].Trim());
                 }
 
-                if (editMode == "edit")
+                if (EditMode == "delete")
                 {
- 
+                    btnDelete.Visible = true;
+                    btnSave.Visible = false;
                 }
-
+                else if (EditMode == "edit" || EditMode == "add")
+                {
+                    btnDelete.Visible = false;
+                    btnSave.Text = "Save";
+                }
                 PopulateData();
             }
         }
-
         private void PopulateData()
         {
             PopulateSupplier();
-            if (editMode == "add")
+
+            if (EditMode == "add")
             {
                 string nextSerialNumber = _purchaseOrderService.GetGenerateNextSerial();
                 txtRefIDs.Text = nextSerialNumber;
 
-                txtPODate.Text = System.DateTime.Now.ToString();            
+                txtPODate.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
             }
-            else if (Order_ID > 0)
+            else if ((EditMode == "edit" || EditMode == "delete") && OrderID > 0)
             {
                 List<PurchaseOrderView> lstOrders = new List<PurchaseOrderView>();
-                lstOrders = _purchaseOrderService.GetPurchaseOrderById(Order_ID);
+                lstOrders = _purchaseOrderService.GetPurchaseOrderById(OrderID);
 
                 if (lstOrders == null || lstOrders.Count == 0)
                     return;
@@ -96,7 +106,7 @@ namespace PurchaseOrder
                 txtRemarks.Text = lstOrders[0].Remark.ToString();
                 ddlSupplier.SelectedValue = lstOrders[0].SupplierID.ToString();
 
-                foreach(var item in lstOrders)
+                foreach (var item in lstOrders)
                 {
                     HtmlTableRow row = new HtmlTableRow();
 
@@ -108,24 +118,19 @@ namespace PurchaseOrder
                     HtmlTableCell cellEdit = new HtmlTableCell();
                     HtmlButton editButton = new HtmlButton
                     {
-                        InnerText = "Edit",
-                        Attributes =
-                        {
-                            //{ "onclick", $"editItem('{reader["ItemName"]}')" }
-                        }
+                        InnerText = "Edit"
                     };
+                    editButton.Attributes.Add("onclick", "editItem(this)");
                     cellEdit.Controls.Add(editButton);
+
 
                     // Delete button
                     HtmlTableCell cellDelete = new HtmlTableCell();
                     HtmlButton deleteButton = new HtmlButton
                     {
                         InnerText = "Delete",
-                        Attributes =
-                        {
-                            //{ "onclick", $"deleteItem('{reader["ItemName"]}')" }
-                        }
                     };
+                    deleteButton.Attributes.Add("onclick", $"deleteItem(this)");
                     cellDelete.Controls.Add(deleteButton);
 
                     row.Cells.Add(cell1);
@@ -146,14 +151,11 @@ namespace PurchaseOrder
                 ddlSupplier.DataTextField = "SupplierName";
                 ddlSupplier.DataValueField = "SupplierID";
                 ddlSupplier.DataBind();
-
-                ddlSupplier.Items.Insert(0, new ListItem("Select One", "0"));
             }
             catch (Exception ex)
             {
             }
         }
-        
         protected void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -198,34 +200,43 @@ namespace PurchaseOrder
                     detail = new PurchaseOrderDetail();
                     string itemName = items[i];
                     var firstOrDefaultItem = lstItems.FirstOrDefault(item => item.ItemName == itemName);
+                    if (EditMode == "edit")
+                    {
+                        detail.PurchaseOrderID = OrderID;
+                    }
                     detail.ItemID = firstOrDefaultItem.ItemID;
                     detail.Quantity = Convert.ToInt32(qtys[i]);
                     detail.Rate = Convert.ToDecimal(ratesArray[i]);
 
                     lstDetail.Add(detail);
                 }
-                if(editMode=="edit" && Order_ID>0)
+
+
+                if (EditMode == "edit" && OrderID > 0)
                 {
+                    order.PurchaseOrderID = OrderID;
                     _purchaseOrderService.UpdatePurchaseOrder(order, lstDetail);
+                }
+                else if (EditMode == "delete" && OrderID > 0)
+                {
+                    _purchaseOrderService.DeletePurchaseOrder(OrderID);
                 }
                 else
                 {
                     _purchaseOrderService.CreatePurchaseOrder(order, lstDetail);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
-            }            
+            }
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "close", string.Format("parent.location.href='purchaseOrderList.aspx';", 0), true);
         }
-
         protected void btnClose_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "close", string.Format("parent.location.href='purchaseOrderList.aspx';", 0), true);
         }
-
 
         [WebMethod(EnableSession = false)]
         public static List<Item> SearchItems(string searchText)

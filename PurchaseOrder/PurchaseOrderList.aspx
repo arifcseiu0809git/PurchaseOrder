@@ -26,23 +26,57 @@
 
         .FirstPrevious {
             text-decoration: none;
-            color: #FFDD00;
-            background-color: #000;
-            border-radius: 5px;
-            padding: 5px 12px;
+            color: black;
+            background-color: #a9ddf1;
+            border-radius: 3px;
+            padding: 7px 12px;
+            font-size: 15px;
+            font-weight: bold;
+             /*border:1px solid #2487ad*/
         }
 
         .NumberCount {
             text-decoration: none;
-            color: white;
-            background-color: #000;
-            border-radius: 5px;
-            padding: 5px 12px;
+            color: black;
+            background-color: #a9ddf1;
+            border-radius: 3px;
+            padding: 7px 12px;
+             font-size: 15px;
+             font-weight: bold;
+           /*border:1px solid #2487ad*/
+        }
+
+        .theme-orange a {
+            color: black !important;
         }
 
         .theme-orange a.active {
-            color: white !important;
+            color: black !important;
         }
+
+         .pager {
+             margin-bottom: 25px !important;
+         }
+         #creatbtn {
+             background-color: #33c7ff !important;
+             color: black !important;
+             padding: 5px;
+             font-weight: bolder;
+             font-size: 13px;
+         } 
+
+         #pageBanner {
+             text-align: center;
+             background-color: gray;
+             color: black;
+             margin-bottom: 25px;
+             height: 34px;
+             border-radius: 4px;
+             padding: 5px;
+             font-size: 17px;
+             font-weight: bolder;
+         }
+
 
     </style>
     <asp:UpdatePanel ID="lstpanel" runat="server">
@@ -52,15 +86,15 @@
                     <div class="card col-12 col-md-12 col-lg-12">
                         <div class="card-body">
                             <div class="Content">
-                                <div style="text-align:center; background-color:#33C7FF; color:black; font-size:16px; margin-bottom: 35px; ">
+                                <div id="pageBanner">
                                     ORDER LIST
                                 </div>
-                                <div style="text-align: right; margin-bottom: 10px;">
-                                    <input type="button" value="Create Order" alt="PurchaseOrderEntry.aspx?keepThis=false&TB_iframe=true&height=570"
+                                <div style="text-align: right; margin-bottom: 10px; ">
+                                    <input type="button" id="creatbtn" value="Create Order" alt="PurchaseOrderEntry.aspx?keepThis=false&TB_iframe=true&height=570"
                                         class="thickbox btn btn-info" title="Order Add/Edit" />
                                 </div>
                                 <div class="ListViewStyle">
-                                     <asp:ListView ID="lvUserInfo" runat="server" SkinID="ListviewSkin" DataSourceID="LinqDataSource1" EnableViewState="false">
+                                     <asp:ListView ID="lvUserInfo" runat="server" SkinID="ListviewSkin" OnItemCommand="OnItemCommand" DataSourceID="LinqDataSource1" EnableViewState="false">
                                         <LayoutTemplate>
                                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="save-stage" style="width: 100%;" role="grid" aria-describedby="save-stage_info">
                                                 <thead>
@@ -107,16 +141,15 @@
                                                     <%#Eval("ExpectedDate")%>&nbsp;
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <a type="button" href="PurchaseOrderEntry.aspx?id= <%#Eval("RefID")%>&mode=edit&TB_iframe=true&height=570"
+                                                    <a type="button" href="PurchaseOrderEntry.aspx?id= <%#Eval("PurchaseOrderID")%>&mode=edit&TB_iframe=true&height=570"
                                                         class="thickbox" title="Order Add/Edit">Edit</a>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <a type="button" href="PurchaseOrderEntry.aspx?id= <%#Eval("RefID")%>&mode=delete&TB_iframe=true&height=570"
+                                                    <a type="button" href="PurchaseOrderEntry.aspx?id= <%#Eval("PurchaseOrderID")%>&mode=delete&TB_iframe=true&height=570"
                                                         class="thickbox" title="Order Add/Edit">Delete</a>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <a type="button" href="PurchaseOrderEntry.aspx?id= <%#Eval("RefID")%>&mode=export&TB_iframe=true&height=570"
-                                                        class="thickbox" title="Order Add/Edit">Export</a>
+                                                    <asp:LinkButton CommandName="Export" PostBackUrl="~/PurchaseOrderList.aspx" CommandArgument='<%#Eval("PurchaseOrderID")%>' ID="btnExport" runat="server" BackColor="Silver" Text="Export" />
                                                 </td>
                                             </tr>
                                         </ItemTemplate>

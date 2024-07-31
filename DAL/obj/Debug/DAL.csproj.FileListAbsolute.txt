@@ -12,4 +12,14 @@ E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Security.Pr
 E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.csproj.CopyComplete
 E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.dll
 E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.pdb
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\Arif Study\Technical Assesment\PurchaseOrder\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
